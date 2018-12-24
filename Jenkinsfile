@@ -19,7 +19,7 @@ podTemplate(label: 'mypod', containers: [
         stage('Check running containers') {
             container('docker') {
                 // example to show you can run docker commands when you mount the socket
-                sh 'echo master'
+                sh 'echo master..'
                 sh 'hostname'
                 sh 'hostname -i'
                 sh 'docker ps'
