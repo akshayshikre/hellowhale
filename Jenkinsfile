@@ -28,10 +28,10 @@ podTemplate(label: 'mypod', containers: [
                 // dir('hellowhale/') {
                         sh 'ls -a'
                         sh 'pwd'
-                    //    sh 'docker build -t akshayshikre/hellowhale:${BUILD_NUMBER} .'
+                        sh 'docker build -t akshayshikre/hellowhale:${BUILD_NUMBER} .'
                         sh 'docker images'
-                    //    sh 'docker login -u akshayshikre -p Sqr@12345'
-                   //     sh 'docker push akshayshikre/hellowhale:${BUILD_NUMBER}'
+                        sh 'docker login -u akshayshikre -p Sqr@12345'
+                        sh 'docker push akshayshikre/hellowhale:dev_${BUILD_NUMBER}'
                 // }
             }
         }
