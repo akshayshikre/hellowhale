@@ -8,7 +8,7 @@ podTemplate(label: 'mypod', containers: [
   ]
   ) {
     node('mypod') {
-        git url: 'https://github.com/akshayshikre/hellowhale.git', branch: 'master'
+        git url: 'https://github.com/akshayshikre/hellowhale.git', branch: 'dev'
         //stage('Clone repository') {
             // container('git') {
             //     sh 'whoami'
