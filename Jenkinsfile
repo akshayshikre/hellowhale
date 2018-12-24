@@ -45,6 +45,5 @@ podTemplate(label: 'mypod', containers: [
             }
         }
         
-        
     }
 }
