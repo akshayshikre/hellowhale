@@ -16,7 +16,6 @@ podTemplate(label: 'mypod', containers: [
             //     sh 'git clone -b master https://github.com/akshayshikre/hellowhale.git'
             // }
         //}
-        
         stage('Check running containers') {
             container('docker') {
                 // example to show you can run docker commands when you mount the socket
