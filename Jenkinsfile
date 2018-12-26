@@ -21,7 +21,7 @@ podTemplate(label: 'mypod', containers: [
                 // example to show you can run docker commands when you mount the socket
                 sh 'hostname'
                 sh 'echo dev'
-                sh 'hostname -i'
+                //sh 'hostname -i'
                 sh 'docker ps'
                 sh 'IMAGE_NAME=akshayshikre/hellowhale:${BUILD_NUMBER}'
                 sh 'ls -a'
