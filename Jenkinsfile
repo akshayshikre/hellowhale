@@ -9,14 +9,6 @@ podTemplate(label: 'mypod', containers: [
   ) {
     node('mypod') {
         git url: 'https://github.com/akshayshikre/hellowhale.git', branch: 'master'
-        //stage('Clone repository') {
-            // container('git') {
-            //     sh 'whoami'
-            //     sh 'hostname -i'
-            //     sh 'git clone -b master https://github.com/akshayshikre/hellowhale.git'
-            // }
-        //}
-        
         stage('Check running containers') {
             container('docker') {
                 // example to show you can run docker commands when you mount the socket
@@ -27,22 +19,19 @@ podTemplate(label: 'mypod', containers: [
                 sh 'IMAGE_NAME=akshayshikre/hellowhale:${BUILD_NUMBER}'
                 sh 'ls -a'
                 sh 'pwd'
-                // dir('hellowhale/') {
-                        sh 'ls -a'
-                        sh 'pwd'
-                        //sh 'docker build -t akshayshikre/hellowhale:master_${BUILD_NUMBER} .'
-                        sh 'docker images'
-                        //sh 'docker login -u akshayshikre -p Sqr@12345'
-                        //sh 'docker push akshayshikre/hellowhale:master_${BUILD_NUMBER}'
-                // }
+                sh 'ls -a'
+                sh 'pwd'
+              //sh 'docker build -t akshayshikre/hellowhale:master_${BUILD_NUMBER} .'
+                sh 'docker images'
+              //sh 'docker login -u akshayshikre -p Sqr@12345'
+              //sh 'docker push akshayshikre/hellowhale:master_${BUILD_NUMBER}'
             }
         }
         stage('Test') {
             container('kubectl') {
                 // example to show you can run docker commands when you mount the socket
                 sh 'hostname'
-                //sh 'hostname -i'
-               // sh 'kubectl get po'
+              //sh 'kubectl get po'
             }
         }
         
