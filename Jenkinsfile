@@ -26,14 +26,15 @@ podTemplate(label: 'mypod', containers: [
         stage('List pods') {
             container('kubectl') {
                 sh 'hostname'
-              withKubeConfig([credentialsId: 'kubeconfdirect',
-                    caCertificate: '<ca-certificate>',
-                    serverUrl: 'https://192.168.99.100:8443',
-                    contextName: 'minikube',
-                    clusterName: 'minikube'
-                    ]) {
-                        sh 'kubectl get pods'
-                       }
+                sh 'kubectl get pods'
+              //withKubeConfig([credentialsId: 'kubeconfdirect',
+                //    caCertificate: '<ca-certificate>',
+                  //  serverUrl: 'https://192.168.99.100:8443',
+                    //contextName: 'minikube',
+                    //clusterName: 'minikube'
+                   // ]) {
+                  //      sh 'kubectl get pods'
+                //       }
             }
        }
         
