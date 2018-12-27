@@ -23,14 +23,9 @@ podTemplate(label: 'mypod', containers: [
               //sh 'docker push akshayshikre/hellowhale:master_${BUILD_NUMBER}'
             }
         }
-        stage('Test') {
-            container('kubectl') {
-                // example to show you can run docker commands when you mount the socket
-                sh 'hostname'
-                //sh 'kubectl get pods'
-            }
-        }
         stage('List pods') {
+            container('kubectl') {
+                sh 'hostname'
               withKubeConfig([credentialsId: 'kubeconfdirect',
                     caCertificate: '<ca-certificate>',
                     serverUrl: '<api-server-address>',
@@ -39,6 +34,7 @@ podTemplate(label: 'mypod', containers: [
                     ]) {
                         sh 'kubectl get pods'
                        }
+            }
        }
         
     }
