@@ -27,6 +27,7 @@ podTemplate(label: 'mypod', containers: [
             container('kubectl') {
                 sh 'hostname'
                 sh 'kubectl config view'
+                sh 'kubectl version'
               //withKubeConfig([credentialsId: 'kubeconfdirect',
                 //    caCertificate: '<ca-certificate>',
                   //  serverUrl: 'https://192.168.99.100:8443',
