@@ -28,9 +28,9 @@ podTemplate(label: 'mypod', containers: [
                 sh 'hostname'
               withKubeConfig([credentialsId: 'kubeconfdirect',
                     caCertificate: '<ca-certificate>',
-                    serverUrl: '<api-server-address>',
-                    contextName: '<context-name>',
-                    clusterName: '<cluster-name>'
+                    serverUrl: 'https://192.168.99.100:8443',
+                    contextName: 'minikube',
+                    clusterName: 'minikube'
                     ]) {
                         sh 'kubectl get pods'
                        }
