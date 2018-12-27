@@ -27,7 +27,7 @@ podTemplate(label: 'mypod', containers: [
             container('kubectl') {
                 // example to show you can run docker commands when you mount the socket
                 sh 'hostname'
-                sh 'kubectl get pods --context=jenkins-project-context'
+                sh 'kubectl get pods'
             }
         }
         
