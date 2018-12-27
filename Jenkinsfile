@@ -15,12 +15,12 @@ podTemplate(label: 'mypod', containers: [
                 sh 'echo master13.'
                 sh 'hostname'
                 //sh 'hostname -i'
-                sh 'docker ps'
-                sh 'IMAGE_NAME=akshayshikre/hellowhale:${BUILD_NUMBER}'
-                sh 'ls -a'
-                sh 'pwd'
-                sh 'ls -a'
-                sh 'pwd'
+                //sh 'docker ps'
+                //sh 'IMAGE_NAME=akshayshikre/hellowhale:${BUILD_NUMBER}'
+                //sh 'ls -a'
+                //sh 'pwd'
+                //sh 'ls -a'
+                //sh 'pwd'
               //sh 'docker build -t akshayshikre/hellowhale:master_${BUILD_NUMBER} .'
                 sh 'docker images'
               //sh 'docker login -u akshayshikre -p Sqr@12345'
@@ -31,7 +31,7 @@ podTemplate(label: 'mypod', containers: [
             container('kubectl') {
                 // example to show you can run docker commands when you mount the socket
                 sh 'hostname'
-              //sh 'kubectl get po'
+                sh 'kubectl get po'
             }
         }
         
