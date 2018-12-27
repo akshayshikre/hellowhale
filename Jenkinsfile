@@ -27,9 +27,19 @@ podTemplate(label: 'mypod', containers: [
             container('kubectl') {
                 // example to show you can run docker commands when you mount the socket
                 sh 'hostname'
-                sh 'kubectl get pods'
+                //sh 'kubectl get pods'
             }
         }
+        stage('List pods') {
+              withKubeConfig([credentialsId: 'kubeconfdirect',
+                    caCertificate: '<ca-certificate>',
+                    serverUrl: '<api-server-address>',
+                    contextName: '<context-name>',
+                    clusterName: '<cluster-name>'
+                    ]) {
+                        sh 'kubectl get pods'
+                       }
+       }
         
     }
 }
