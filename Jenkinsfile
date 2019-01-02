@@ -1,6 +1,6 @@
 podTemplate(label: 'mypod', containers: [
     containerTemplate(name: 'docker', image: 'docker', command: 'cat', ttyEnabled: true),
-    containerTemplate(name: 'kubectl', image: 'lachlanevenson/k8s-kubectl:v1.10.10', command: 'cat', ttyEnabled: true)
+    //containerTemplate(name: 'kubectl', image: 'lachlanevenson/k8s-kubectl:v1.10.10', command: 'cat', ttyEnabled: true)
     //containerTemplate(name: 'helm', image: 'lachlanevenson/k8s-helm:latest', command: 'cat', ttyEnabled: true)
   ],
   volumes: [
@@ -23,8 +23,8 @@ podTemplate(label: 'mypod', containers: [
               //sh 'docker push akshayshikre/hellowhale:master_${BUILD_NUMBER}'
             }
         }
-        stage('List pods') {
-            container('kubectl') {
+        //stage('List pods') {
+            //container('kubectl') {
                 
            //    withKubeConfig([credentialsId: 'kubeconfdirect',
            //          caCertificate: '<ca-certificate>',
@@ -32,13 +32,13 @@ podTemplate(label: 'mypod', containers: [
            //          contextName: 'minikube',
            //          clusterName: 'minikube'
            //          ]) {
-                        sh 'hostname'
-                        sh 'kubectl config view'
-                        sh 'kubectl version'
+           //             sh 'hostname'
+          //              sh 'kubectl config view'
+           //             sh 'kubectl version'
            //             sh 'kubectl get pods'
            //            }
-            }
-       }
+            //}
+       //}
         
     }
 }
