@@ -36,13 +36,15 @@ podTemplate(label: 'mypod', containers: [
                         sh 'kubectl config view'
                         sh 'kubectl version'
                         sh 'kubectl get pods -n default'
+                        sh 'kubectl set image deployment/hellowhale hellowhale=master_${BUILD_NUMBER}'
+                        sh 'kubectl rollout history deployment/hellowhale'
            //            }
             }
        }
         
       stage('Run helm') {
          container('helm') {
-                  sh "helm list"
+                  //sh "helm list"
                   }
         }
         
