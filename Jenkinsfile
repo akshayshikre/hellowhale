@@ -1,6 +1,6 @@
 podTemplate(label: 'mypod', containers: [
     containerTemplate(name: 'docker', image: 'docker', command: 'cat', ttyEnabled: true),
-    containerTemplate(name: 'kubectl', image: 'lachlanevenson/k8s-kubectl:v1.10.10', command: 'cat', ttyEnabled: true)
+    containerTemplate(name: 'kubectl', image: 'lachlanevenson/k8s-kubectl:v1.10.10', command: 'cat', ttyEnabled: true),
     containerTemplate(name: 'helm', image: 'lachlanevenson/k8s-helm:latest', command: 'cat', ttyEnabled: true)
   ],
   volumes: [
@@ -9,7 +9,7 @@ podTemplate(label: 'mypod', containers: [
   ) {
     node('mypod') {
         git url: 'https://github.com/akshayshikre/hellowhale.git', branch: 'master'
-        stage('Check running containers') {
+        stage('Run docker') {
             container('docker') {
                 // example to show you can run docker commands when you mount the socket
                 sh 'echo master13.'
@@ -23,7 +23,7 @@ podTemplate(label: 'mypod', containers: [
                 sh 'docker push akshayshikre/hellowhale:master_${BUILD_NUMBER}'
             }
         }
-        stage('List pods') {
+        stage('Run kubectl') {
             container('kubectl') {
                 
            //    withKubeConfig([credentialsId: 'kubeconfdirect',
@@ -39,6 +39,12 @@ podTemplate(label: 'mypod', containers: [
            //            }
             }
        }
+        
+      stage('Run helm') {
+         container('helm') {
+                  sh "helm list"
+                  }
+        }
         
     }
 }
