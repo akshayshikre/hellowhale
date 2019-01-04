@@ -35,7 +35,7 @@ podTemplate(label: 'mypod', containers: [
                         sh 'hostname'
                         sh 'kubectl config view'
                         sh 'kubectl version'
-                        sh 'kubectl get pods'
+                        sh 'kubectl get pods -n default'
            //            }
             }
        }
