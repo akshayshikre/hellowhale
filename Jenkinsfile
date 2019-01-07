@@ -4,7 +4,7 @@ podTemplate(label: 'mypod', containers: [
     containerTemplate(name: 'helm', image: 'lachlanevenson/k8s-helm:latest', command: 'cat', ttyEnabled: true)
   ],
   volumes: [
-    hostPathVolume(mountPath: '/var/run/docker.sock', hostPath: '/var/run/docker.sock'),
+   // hostPathVolume(mountPath: '/var/run/docker.sock', hostPath: '/var/run/docker.sock'),
   ]
   ) {
     node('mypod') {
@@ -17,7 +17,7 @@ podTemplate(label: 'mypod', containers: [
                 sh 'hostname -i'
                 sh 'docker ps'
                 sh 'IMAGE_NAME=akshayshikre/hellowhale:dev_${BUILD_NUMBER}'
-                sh 'docker build --no-cache -t akshayshikre/hellowhale:dev_${BUILD_NUMBER} .'
+                sh 'docker build -t akshayshikre/hellowhale:dev_${BUILD_NUMBER} .'
                 sh 'docker images'
                 sh 'docker login -u akshayshikre -p Sqr@12345'
                 sh 'docker push akshayshikre/hellowhale:dev_${BUILD_NUMBER}'
