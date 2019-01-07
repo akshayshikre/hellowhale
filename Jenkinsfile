@@ -18,7 +18,7 @@ podTemplate(label: 'mypod', containers: [
                 sh 'hostname -i'
                 sh 'docker ps'
                 sh 'IMAGE_NAME=akshayshikre/hellowhale:${BUILD_NUMBER}'
-                sh 'docker build -t akshayshikre/hellowhale:master_${BUILD_NUMBER} .'
+                sh 'docker build --no-cache -t akshayshikre/hellowhale:master_${BUILD_NUMBER} .'
                 sh 'docker images'
                 sh 'docker login -u akshayshikre -p Sqr@12345'
                 sh 'docker push akshayshikre/hellowhale:master_${BUILD_NUMBER}'
