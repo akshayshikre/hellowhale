@@ -19,7 +19,7 @@ podTemplate(label: 'mypod', containers: [
                 sh 'IMAGE_NAME=akshayshikre/hellowhale:dev_${BUILD_NUMBER}'
                 sh 'docker build -t akshayshikre/hellowhale:dev_${BUILD_NUMBER} .'
                 sh 'docker images'
-                sh 'docker login -u akshayshikre -p Sqr@12345'
+                sh 'docker login -u ${DOCKER_USR} -p ${DOCKER_PWD}'
                 sh 'docker push akshayshikre/hellowhale:dev_${BUILD_NUMBER}'
             }
         }
