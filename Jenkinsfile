@@ -12,7 +12,6 @@ podTemplate(label: 'mypod', containers: [
         stage('Run docker') {
             container('docker') {
                 // example to show you can run docker commands when you mount the socket
-                sh 'cat html/index.html'
                 sh 'echo master13.'
                 sh 'hostname'
                 sh 'hostname -i'
@@ -45,7 +44,7 @@ podTemplate(label: 'mypod', containers: [
         
       stage('Run helm') {
          container('helm') {
-                  //sh "helm list"
+                  sh "hostname"
                   }
         }
         
