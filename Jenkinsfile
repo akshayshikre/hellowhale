@@ -37,7 +37,7 @@ podTemplate(label: 'mypod', containers: [
                         sh 'kubectl config view'
                         sh 'kubectl version'
                         sh 'kubectl get pods -n default'
-                        sh 'kubectl set image deployment/hellowhale -n default hellowhale=master_${BUILD_NUMBER}'
+                        sh 'kubectl set image deployment/hellowhale -n default hellowhale=akshayshikre/hellowhale:master_${BUILD_NUMBER}'
                         sh 'kubectl rollout history -n default deployment/hellowhale'
            //            }
             }
