@@ -10,11 +10,11 @@ podTemplate(label: label, containers: [
   ) {
     node(label) {
         git url: 'https://github.com/akshayshikre/hellowhale.git', branch: 'dev'
-        def myRepo = checkout scm
-        def gitCommit = myRepo.GIT_COMMIT
-        def gitBranch = myRepo.GIT_BRANCH
-        def shortGitCommit = "${gitCommit[0..10]}"
-        def previousGitCommit = sh(script: "git rev-parse ${gitCommit}~", returnStdout: true)
+        //def myRepo = checkout scm
+        //def gitCommit = myRepo.GIT_COMMIT
+        //def gitBranch = myRepo.GIT_BRANCH
+        //def shortGitCommit = "${gitCommit[0..10]}"
+        //def previousGitCommit = sh(script: "git rev-parse ${gitCommit}~", returnStdout: true)
 
         stage('Run docker') {
             container('docker') {
@@ -54,6 +54,7 @@ podTemplate(label: label, containers: [
          container('helm') {
                   //sh "helm list"
                     sh 'hostname'
+                    sh "helm list"
                   }
         }
         
