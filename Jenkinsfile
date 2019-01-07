@@ -9,7 +9,7 @@ podTemplate(label: label, containers: [
   ]
   ) {
     node(label) {
-        git url: 'https://github.com/akshayshikre/hellowhale.git', branch: 'dev'
+        //git url: 'https://github.com/akshayshikre/hellowhale.git', branch: 'dev'
         //def myRepo = checkout scm
         //def gitCommit = myRepo.GIT_COMMIT
         //def gitBranch = myRepo.GIT_BRANCH
@@ -54,7 +54,6 @@ podTemplate(label: label, containers: [
          container('helm') {
                   //sh "helm list"
                     sh 'hostname'
-                    sh "helm list"
                   }
         }
         
