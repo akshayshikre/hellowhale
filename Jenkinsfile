@@ -33,12 +33,12 @@ podTemplate(label: label, containers: [
         stage('Run kubectl') {
             container('kubectl') {
                 
-               withKubeConfig([credentialsId: 'kubejenkinsdefault',
-                     caCertificate: '<ca-certificate>',
-                     serverUrl: 'https://157.230.9.247:6443',
-                     contextName: 'kubernetes-admin@kubernetes',
-                     clusterName: 'kubernetes'
-                     ]) {
+               //withKubeConfig([credentialsId: 'kubejenkinsdefault',
+                     //caCertificate: '<ca-certificate>',
+                     //serverUrl: 'https://157.230.9.247:6443',
+                     //contextName: 'kubernetes-admin@kubernetes',
+                     //clusterName: 'kubernetes'
+                     //]) {
                         sh 'hostname'
                         sh 'kubectl config view'
                         sh 'kubectl version'
@@ -46,7 +46,7 @@ podTemplate(label: label, containers: [
                         sh 'kubectl set image deployment/hellowhale -n default hellowhale=akshayshikre/hellowhale:dev_${BUILD_NUMBER}'
                         sh 'sleep 30'
                         sh 'kubectl rollout history -n default deployment/hellowhale'
-                       }
+                       //}
             }
        }
         
