@@ -33,7 +33,7 @@ podTemplate(label: label, containers: [
         stage('Run kubectl') {
             container('kubectl') {
                 
-               withKubeConfig([credentialsId: 'kubedefaultjenkins',
+               withKubeConfig([credentialsId: 'kubedefaultsystem',
                      caCertificate: '',
                      serverUrl: 'https://157.230.9.247:6443',
                      contextName: 'kubernetes-admin@kubernetes',
