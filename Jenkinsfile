@@ -19,13 +19,13 @@ podTemplate(label: label, containers: [
         stage('Run docker') {
             container('docker') {
                 // example to show you can run docker commands when you mount the socket
-                sh 'echo dev13.'
-                sh 'hostname'
-                sh 'hostname -i'
-                sh 'docker ps'
-                sh 'IMAGE_NAME=akshayshikre/hellowhale:dev_${BUILD_NUMBER}'
+                //sh 'echo dev13.'
+                //sh 'hostname'
+                //sh 'hostname -i'
+                //sh 'docker ps'
+                //sh 'IMAGE_NAME=akshayshikre/hellowhale:dev_${BUILD_NUMBER}'
                 sh 'docker build -t akshayshikre/hellowhale:dev_${BUILD_NUMBER} .'
-                sh 'docker images'
+                //sh 'docker images'
                 sh 'docker login -u ${DOCKER_USR} -p ${DOCKER_PWD}'
                 sh 'docker push akshayshikre/hellowhale:dev_${BUILD_NUMBER}'
             }
@@ -39,12 +39,12 @@ podTemplate(label: label, containers: [
                      contextName: 'kubernetes-admin@kubernetes',
                      clusterName: 'kubernetes'
                      ]) {
-                        sh 'hostname'
-                        sh 'kubectl config view'
-                        sh 'kubectl version'
-                        sh 'kubectl get pods -n default'
+                        //sh 'hostname'
+                        //sh 'kubectl config view'
+                        //sh 'kubectl version'
+                        //sh 'kubectl get pods -n default'
                         sh 'kubectl set image deployment/hellowhale -n default hellowhale=akshayshikre/hellowhale:dev_${BUILD_NUMBER}'
-                        sh 'sleep 30'
+                        //sh 'sleep 30'
                         sh 'kubectl rollout history -n default deployment/hellowhale'
                        }
             }
@@ -54,7 +54,7 @@ podTemplate(label: label, containers: [
          container('helm') {
              
                     sh "helm list"
-                    sh 'hostname'
+                    //sh 'hostname'
             
              }
         }
