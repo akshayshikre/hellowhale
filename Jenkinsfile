@@ -52,7 +52,7 @@ podTemplate(label: label, containers: [
         
       stage('Run helm') {
          container('helm') {
-                  //sh "helm list"
+                    sh "helm list"
                     sh 'hostname'
                   }
         }
