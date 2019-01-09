@@ -52,15 +52,10 @@ podTemplate(label: label, containers: [
         
       stage('Run helm') {
          container('helm') {
-             withKubeConfig([credentialsId: 'kubedefaultsystem',
-                     caCertificate: '',
-                     serverUrl: 'https://157.230.9.247:6443',
-                     contextName: 'kubernetes-admin@kubernetes',
-                     clusterName: 'kubernetes'
-                     ]) {
+             
                     sh "helm list"
                     sh 'hostname'
-             }
+            
              }
         }
         
