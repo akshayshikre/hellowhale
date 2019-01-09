@@ -59,7 +59,8 @@ podTemplate(label: label, containers: [
                      clusterName: 'kubernetes'
                      ]) {
                     sh "helm list"
-                    sh 'hostname'     
+                    sh 'hostname'
+             }
              }
         }
         
