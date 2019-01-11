@@ -1,5 +1,7 @@
 node {
     checkout scm
-    def customImage = docker.build("akshayshikre/hellowhale:${env.BUILD_ID}")
-    customImage.push()
+    docker.withRegistry( ‘’, registryCredential ) {
+        def customImage = docker.build("akshayshikre/hellowhale:${env.BUILD_ID}")
+        customImage.push()
+    }
 }
