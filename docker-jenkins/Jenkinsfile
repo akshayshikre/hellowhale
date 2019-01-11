@@ -1,27 +1,22 @@
 pipeline {
-  environment {
-    registry = “akshayshikre/hellowhale”
-    registryCredential = ‘dockerhubcredentials’
-    dockerImage = ‘’
-  }
   agent any
   stages {
-    stage(‘Cloning’) {
+    stage('Cloning') {
       steps {
         checkout scm
       }
     }
-    stage(‘Building’) {
+    stage('Building') {
       steps{
         script {
-          dockerImage = docker.build registry + ":${env.BUILD_ID}"
+          dockerImage = docker.build "akshayshikre/hellowhale:${env.BUILD_ID}"
         }
       }
     }
-    stage(‘Deploy’) {
+    stage('Deploy') {
       steps{
         script {
-          docker.withRegistry( ‘’, registryCredential ) {
+          docker.withRegistry( '', 'dockerhubcredentials' ) {
             dockerImage.push()
           }
         }
