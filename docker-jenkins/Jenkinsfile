@@ -6,7 +6,7 @@ pipeline {
   }
   agent any
   stages {
-    stage(‘Cloning Git’) {
+    stage(‘Cloning’) {
       steps {
         git ‘https://github.com/akshayshikre/hellowhale.git'
       }
