@@ -8,7 +8,7 @@ pipeline {
   stages {
     stage(‘Cloning’) {
       steps {
-        git ‘https://github.com/akshayshikre/hellowhale.git'
+        checkout scm
       }
     }
     stage(‘Building image’) {
