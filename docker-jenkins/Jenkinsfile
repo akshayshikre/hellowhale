@@ -13,7 +13,7 @@ pipeline {
         }
       }
     }
-    stage('Deploy') {
+    stage('Pushing') {
       steps{
         script {
           docker.withRegistry( '', 'dockerhubcredentials' ) {
@@ -22,5 +22,29 @@ pipeline {
         }
       }
     }
+    stage('Kubectl') {
+            agent {
+                docker { image 'lachlanevenson/k8s-kubectl:v1.10.10' }
+            }
+            steps {
+                  withKubeConfig([credentialsId: 'kubedefaultsystem',
+                     caCertificate: '',
+                     serverUrl: 'https://157.230.9.247:6443',
+                     contextName: 'kubernetes-admin@kubernetes',
+                     clusterName: 'kubernetes'
+                     ]) {
+                        //sh 'hostname'
+                        //sh 'kubectl config view'
+                        //sh 'kubectl version'
+                        //sh 'kubectl get pods -n default'
+                        sh 'kubectl set image deployment/hellowhale -n default hellowhale=akshayshikre/hellowhale:dev_${BUILD_NUMBER}'
+                        //sh 'sleep 30'
+                        sh 'kubectl rollout history -n default deployment/hellowhale'
+                       }
+            
+            }
+        }
+    
+    
   }
 }
