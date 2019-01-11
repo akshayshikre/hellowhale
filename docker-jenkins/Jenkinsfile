@@ -39,7 +39,7 @@ pipeline {
                         //sh 'sleep 30'
                         sh 'kubectl rollout history -n default deployment/hellowhale'
                        }
-            
+              }
             }
         }
     
