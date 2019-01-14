@@ -40,9 +40,9 @@ pipeline {
                         //sh 'kubectl config view'
                         //sh 'kubectl version'
                         //sh 'kubectl get pods -n default'
-                        sh 'kubectl set image deployment/hellowhale -n default hellowhale=akshayshikre/hellowhale:${env.BUILD_ID}'
+                   //     sh 'kubectl set image deployment/hellowhale -n default hellowhale=akshayshikre/hellowhale:${env.BUILD_ID}'
                         //sh 'sleep 30'
-                        sh 'kubectl rollout history -n default deployment/hellowhale'
+                   //     sh 'kubectl rollout history -n default deployment/hellowhale'
                   //     }
                  }
                }
