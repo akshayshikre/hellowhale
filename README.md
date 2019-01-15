@@ -1,3 +1,3 @@
 # hellowhale
 Simple Docker Demo App
-dev readme.md file...
+dev readme.md file
