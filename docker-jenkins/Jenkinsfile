@@ -1,1 +1,28 @@
-asd
+
+pipeline {
+  agent any
+  stages {
+    stage('Cloning') {
+      steps {
+        checkout scm
+      }
+    }
+    stage('Building') {
+      steps{
+        script {
+          dockerImage = docker.build "akshayshikre/hellowhale:${env.BUILD_ID}"
+        }
+      }
+    }
+    stage('Pushing') {
+      steps{
+        script {
+          docker.withRegistry( '', 'dockerhubcredentials' ) {
+            dockerImage.push()
+          }
+        }
+      }
+    }
+
+  }
+}
